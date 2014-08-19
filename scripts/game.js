@@ -1,6 +1,7 @@
 window.addEventListener("load",function() {
   var Q = window.Q = Quintus({development: true})
-    .include("Scenes, Sprites, 2D, Input, Touch, UI, TMX, Audio")
+    .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio")
+    .include("ActionPlatformerPlayer, ActionPlatformerEnemy")
     .setup({
       width: 320,   //to fit devices with a screne resolution of 1280 x 720
       height: 180,
@@ -11,18 +12,22 @@ window.addEventListener("load",function() {
 
     //define scene
     Q.scene("level", function(stage){
-      Q.stageTMX("small_level.tmx", stage);
+      var player;
+      Q.stageTMX("big_level.tmx", stage);
+
+      player = Q("Player").first();
+      stage.add("viewport").follow(player, {x: true, y: true});
     });
 
     //load assets
-    Q.loadTMX("small_level.tmx", function(){
+    Q.loadTMX("big_level.tmx, sprites.json, sprites.png", function(){
+      Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
     });
-    
+
 });
-        
-        
-        
-        
-        
-        
+
+
+
+
+

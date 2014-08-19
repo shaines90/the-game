@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="29" tilewidth="21" tileheight="21">
+ <tileset firstgid="1" name="spritesheet" tilewidth="21" tileheight="21" spacing="2">
+  <image source="../images/spritesheet.png" width="692" height="692"/>
+ </tileset>
+ <layer name="background1" width="50" height="29">
+  <properties>
+   <property name="type" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7Ayc/XvqDL2JJBeUlVVVVVVfTpDAJ2K
+  </data>
+ </layer>
+ <layer name="background2" width="50" height="29">
+  <properties>
+   <property name="type" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztlm8KgCAMxe0KepDuf4TwUjVi8BDNYssC3w/6UOTzz7Y3QyCEEPIl6XhWeI8GrW05tVRjvfq5AY4XvWRYD/knEmONq8RYv3lp1/LZS39WLL5gQf0A88Q7lgn0vfcpeiNzT/dhYaZawf4nZ5fh/Hq5YPUWHSdzytxf1RgZC+ZN736DOfFGXaK3xhvrqTGTXxAfctGnnvZ4rAv0bb0v9MaXfTKFtp/nl+4GhJB/swMhnRQM
+  </data>
+ </layer>
+ <layer name="collision" width="50" height="29">
+  <properties>
+   <property name="collision" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztWEEOgCAMI/EvPlL0IfxWPZAYwmAbGNhYk95mSensgeCcC0bjD9w32Yw+pMN8zAWtPvzDM+HF1M5pUfUgjVRHax5SQfFRyrhl/zDaNf0V88Di6KyHQfTRe0++6NmBkC43jxF3XjpX2//R0hUvPGG29C13/7TlIR0YH9S+Sedzs9yegHZwpTwkQJuPWu/OztHvNEbj7LwBofU5bg==
+  </data>
+ </layer>
+</map>
