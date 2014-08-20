@@ -1860,7 +1860,7 @@
    <tile gid="47"/>
    <tile gid="19"/>
    <tile gid="0"/>
-   <tile gid="109"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2338,7 +2338,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="124"/>
    <tile gid="153"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3795,7 +3795,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="124"/>
-   <tile gid="157"/>
+   <tile gid="124"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
