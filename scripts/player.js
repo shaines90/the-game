@@ -23,8 +23,10 @@ Quintus.ActionPlatformerPlayer = function(Q) {
         that.p.isJumping = false;
       });
     },
+    //when player damaged, recall the start level func (Reset game)
     damage: function(){
       Q.stageScene("level");
+      Q.audio.play('themeSong.mp3',{ loop: true });
     }
   });
 };

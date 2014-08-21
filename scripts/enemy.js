@@ -6,6 +6,12 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       //enemy hits player left, right or top
       entity.on("bump.left, bump.right, bump.bottom", function(collision){
         if(collision.obj.isA("Player")) {
+      //stop theme music
+          Q.audio.stop('themeSong.mp3')
+      //death music
+          Q.audio.play('kill-enemy.mp3');
+      //message saying you died
+          Q.stageScene("endGame",1, { label: "You Died" });
       //damage player on hit
           collision.obj.damage();
         }
