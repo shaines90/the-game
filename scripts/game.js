@@ -1,6 +1,6 @@
 window.addEventListener("load",function() {
   var Q = window.Q = Quintus({development: true})
-    .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim")
+    .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim, UI")
     .include("ActionPlatformerPlayer, ActionPlatformerEnemy")
     .setup({
       width: 320,   //to fit devices with a screne resolution of 1280 x 720
@@ -25,38 +25,36 @@ window.addEventListener("load",function() {
       Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
       Q.audio.play('themeSong.mp3',{ loop: true });
-    }, {
-      progressCallback: function(loaded,total) {
-        var element = document.getElementById("loading_progress");
-        element.style.width = Math.floor(loaded/total*100) + "%";
-  }
-});
-
-
+    });
 
     //mute music on .stopMusic button
-    // button.on("click",function() {
-    //   Q.audio.stop('themeSong.mp3');
+    document.getElementById('stopMusicButton').onclick = function() {
+      Q.audio.stop('themeSong.mp3');
+    };
 
-    // Q.scene('endGame',function(stage) {
-    //   var container = stage.insert(new Q.UI.Container({
-    //     x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"
-    //   }));
+    document.getElementById('startMusicButton').onclick = function() {
+      Q.audio.play('themeSong.mp3',{ loop: true });
+    };
 
-    //   var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
-    //                                                   label: "Play Again" }))
-    //   var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h,
-    //                                                    label: stage.options.label }));
-    //   // When the button is clicked, clear all the stages
-    //   // and restart the game.
-    //   button.on("click",function() {
-    //     Q.clearStages();
-    //     Q.stageScene('level1');
-    //   });
+    //gameover screen overlay
+    Q.scene('endGame',function(stage) {
+      var styling = new Q.UI.Container({x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"});
+      var container = stage.insert(styling);
 
-    //   // Expand the container to visibily fit it's contents
-    //   container.fit(20);
-    // });
+      var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC",
+                                                      label: "Play Again" }))
+      var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h,
+                                                       label: stage.options.label }));
+
+      // When the button is clicked, clear all the stages and restart the game.
+      button.on("click",function() {
+        Q.clearStages();
+        Q.stageScene('level');
+      });
+
+      // Expand the container to visibily fit it's contents
+      container.fit(20);
+    });
 });
 
 
