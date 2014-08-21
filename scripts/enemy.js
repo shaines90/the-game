@@ -6,8 +6,8 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       //enemy hits player left, right or top
       entity.on("bump.left, bump.right, bump.bottom", function(collision){
         if(collision.obj.isA("Player")) {
-      //kill player
-          console.log('You died!');
+      //damage player on hit
+          collision.obj.damage();
         }
       });
       entity.on("bump.top", function(collision){
