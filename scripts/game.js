@@ -8,6 +8,7 @@ window.addEventListener("load",function() {
       scaleToFit: true
     }).controls().touch();
 
+    Q.enableSound();
     Q.setImageSmoothing(false);
 
     //define scene
@@ -20,7 +21,7 @@ window.addEventListener("load",function() {
     });
 
     //load assets
-    Q.loadTMX("big_level.tmx, sprites.json, sprites.png", function(){
+    Q.loadTMX("big_level.tmx, sprites.json, sprites.png, kill-enemy.mp3, jump.mp3, coin.mp3, themeSong.mp3", function(){
       Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
     });
