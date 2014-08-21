@@ -25,7 +25,31 @@ window.addEventListener("load",function() {
       Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
       Q.audio.play('themeSong.mp3',{ loop: true });
+    }, {
+      progressCallback: function(loaded,total) {
+        var element = document.getElementById("loading_progress");
+        element.style.width = Math.floor(loaded/total*100) + "%";
+      }
     });
+
+    //give lives and score on load
+    Q.state.reset({ score: 0, lives: 3 });
+    Q.UI.Text.extend("Score",{
+      init: function(p) {
+        this._super({
+          label: "score: 0",
+          x: 0,
+          y: 0
+        });
+
+        Q.state.on("change.score",this,"score");
+      },
+
+      score: function(score) {
+        this.p.label = "score: " + score;
+      }
+    });
+
 
     //mute music on .stopMusic button
     document.getElementById('stopMusicButton').onclick = function() {

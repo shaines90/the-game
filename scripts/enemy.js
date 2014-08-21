@@ -14,6 +14,9 @@ Quintus.ActionPlatformerEnemy = function(Q) {
           Q.stageScene("endGame",1, { label: "You Died" });
       //damage player on hit
           collision.obj.damage();
+      //set score to 0
+          Q.state.set("score",0);
+          Q.state.get("score");
         }
       });
       entity.on("bump.top", function(collision){
@@ -25,6 +28,10 @@ Quintus.ActionPlatformerEnemy = function(Q) {
           Q.audio.play('kill-enemy.mp3');
           //kill enemy
           this.destroy();
+          //add 50 to the score
+          Q.state.inc("score",50);
+          console.log("your score has increased by 50");
+          Q.state.get("score");
         }
       });
     }
