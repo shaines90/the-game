@@ -77,14 +77,27 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       //finds the enemies initial velocity
       this.p.initialVy = this.p.vy;
       //finds the direction - will be either 1 or -1
-      this.p.vyDirection = this.p.vy / Math.abs(this.p.vy);
+      this.p.vyDirection = this.p.vy/Math.abs(this.p.vy);
+
+      //listen for hitting top or bottom to change direction
+      this.on("bump.top, bump.bottom",function(collision) {
+        that.p.vy = -Math.abs(that.p.initialVy) * that.p.vyDirection;
+        that.p.vyDirection = that.p.vy/Math.abs(that.p.vy);
+      });
+
+    },
+    //compare direction & range - then flip movement and direction of enemy
+    step: function(dt) {
+      if(this.p.y - this.p.initialY >= this.p.rangeY && this.p.vy > 0) {
+        this.p.vy = -this.p.vy;
+        this.p.vyDirection *= -1;
+      }
+      else if(-this.p.y + this.p.initialY >= this.p.rangeY && this.p.vy < 0) {
+        this.p.vy = -this.p.vy;
+        this.p.vyDirection *= -1;
+      }
     }
   });
-
-
-
-
-
 
 
 };

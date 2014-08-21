@@ -7,6 +7,12 @@
     <property name="Class" value="Player"/>
    </properties>
   </tile>
+  <tile id="234">
+   <properties>
+    <property name="Class" value="VerticalEnemy"/>
+    <property name="sheet" value="gray-alien"/>
+   </properties>
+  </tile>
   <tile id="446">
    <properties>
     <property name="Class" value="GroundEnemy"/>
@@ -3621,7 +3627,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="124"/>
+   <tile gid="123"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3722,7 +3728,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="123"/>
+   <tile gid="0"/>
    <tile gid="124"/>
    <tile gid="124"/>
    <tile gid="124"/>
@@ -3739,7 +3745,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="124"/>
-   <tile gid="0"/>
+   <tile gid="125"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -4394,5 +4400,10 @@
   <object gid="447" x="618" y="270"/>
   <object gid="447" x="563" y="371"/>
   <object gid="447" x="43" y="225"/>
+  <object gid="235" x="422" y="232"/>
+  <object gid="235" x="125" y="292"/>
+  <object gid="235" x="758" y="337"/>
+  <object gid="235" x="884" y="502"/>
+  <object gid="235" x="399" y="422"/>
  </objectgroup>
 </map>
