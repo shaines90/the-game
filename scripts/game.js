@@ -5,7 +5,8 @@ window.addEventListener("load",function() {
     .setup({
       width: 320,   //to fit devices with a screne resolution of 1280 x 720
       height: 180,
-      scaleToFit: true
+      scaleToFit: true,
+      maximize: "touch"
     }).controls().touch();
 
     Q.enableSound();
