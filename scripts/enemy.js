@@ -95,7 +95,7 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       this.p.vyDirection = this.p.vy/Math.abs(this.p.vy);
 
       //listen for hitting top or bottom to change direction
-      this.on("bump.top, bump.bottom",function(collision) {
+      this.on("bump.bottom",function(collision) {
         that.p.vy = -Math.abs(that.p.initialVy) * that.p.vyDirection;
         that.p.vyDirection = that.p.vy/Math.abs(that.p.vy);
       });

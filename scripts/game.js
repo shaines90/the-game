@@ -3,9 +3,9 @@ window.addEventListener("load",function() {
     .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim, UI")
     .include("ActionPlatformerPlayer, ActionPlatformerEnemy")
     .setup({
-      width: 320,   //to fit devices with a screne resolution of 1280 x 720
-      height: 180,
-      scaleToFit: true,
+      width: 420,   //to fit devices with a screne resolution of 1280 x 720
+      height: 280,
+      // scaleToFit: true,
       maximize: "touch"
     }).controls().touch();
 
