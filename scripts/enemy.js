@@ -14,6 +14,7 @@ Quintus.ActionPlatformerEnemy = function(Q) {
           if (Q.state.get("die") === false) {
             Q.state.set({die: true});
             Q.stageScene("endGame",1, { label: "You Died" });
+            Q.stage().pause();
           }
       //damage player on hit
           collision.obj.damage();

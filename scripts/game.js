@@ -1,7 +1,9 @@
 leaderBoard = [];
+result = 'XXX';
 
 window.addEventListener("load",function() {
   //give lives and score on load
+  result = prompt("Enter your name");
 
   var Q = window.Q = Quintus({development: true})
     .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim, UI")
@@ -37,6 +39,7 @@ window.addEventListener("load",function() {
 
       player = Q("Player").first();
       stage.add("viewport").follow(player, {x: true, y: true});
+
       // score = stage.insert(new Q.Score);
 
       // Q.state.on("change.score", function(score) {
@@ -80,7 +83,6 @@ window.addEventListener("load",function() {
       container.insert(new Q.UI.Text({x:0, y: 60, label: "Name" }));
       container.insert(new Q.UI.Text({x:80, y: 60, label: "Marks" }));
 
-      var result = prompt("Enter your name");
       leaderBoard.push({"name": result, "marks": Q.state.get("score").toString()});
 
       var yPos = 60;
