@@ -79,9 +79,9 @@ window.addEventListener("load",function() {
                                                        label: stage.options.label }));
       container.insert(new Q.UI.Text({x:10, y: 30, label: "Leaderboard" }));
 
-      container.insert(new Q.UI.Text({x:-80, y: 60, label: "Pos" }));
+      container.insert(new Q.UI.Text({x:-80, y: 60, label: "#" }));
       container.insert(new Q.UI.Text({x:0, y: 60, label: "Name" }));
-      container.insert(new Q.UI.Text({x:80, y: 60, label: "Marks" }));
+      container.insert(new Q.UI.Text({x:80, y: 60, label: "Score" }));
 
       leaderBoard.push({"name": result, "marks": Q.state.get("score").toString()});
 
@@ -94,7 +94,7 @@ window.addEventListener("load",function() {
 
         yPos = 60 + (posNumber * 25);
 
-        container.insert(new Q.UI.Text({x:-100, y: yPos, label: pos }));
+        container.insert(new Q.UI.Text({x:-80, y: yPos, label: pos }));
         container.insert(new Q.UI.Text({x:0, y: yPos, label: person.name }));
         container.insert(new Q.UI.Text({x:100, y: yPos, label: marks }));
       }
