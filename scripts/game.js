@@ -1,5 +1,7 @@
 leaderBoard = [];
 result = 'XXX';
+gameWidth = 820;
+gameHeight = 480;
 
 window.addEventListener("load",function() {
   //give lives and score on load
@@ -9,8 +11,8 @@ window.addEventListener("load",function() {
     .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim, UI")
     .include("ActionPlatformerPlayer, ActionPlatformerEnemy")
     .setup({
-      width: 820,   //to fit devices with a screne resolution of 1280 x 720
-      height: 480,
+      width: gameWidth,   //to fit devices with a screne resolution of 1280 x 720
+      height: gameHeight,
       maximize: "touch"
     }).controls().touch();
 
@@ -38,7 +40,7 @@ window.addEventListener("load",function() {
       Q.stageTMX("big_level.tmx", stage);
 
       player = Q("Player").first();
-      stage.add("viewport").follow(player, {x: true, y: true});
+      stage.add("viewport").follow(player);
 
       // score = stage.insert(new Q.Score);
 
@@ -54,11 +56,6 @@ window.addEventListener("load",function() {
       Q.stageScene("level");
       Q.audio.play('themeSong.mp3',{ loop: true });
       Q.state.reset({ score: 0, lives: 3, die: false });
-    }, {
-      progressCallback: function(loaded,total) {
-        var element = document.getElementById("loading_progress");
-        element.style.width = Math.floor(loaded/total*100) + "%";
-      }
     });
 
     //mute music on .stopMusic button
@@ -75,13 +72,13 @@ window.addEventListener("load",function() {
       var styling = new Q.UI.Container({x: Q.width/2, y: 50, fill: "rgba(0,0,0,0.5)"});
       var container = stage.insert(styling);
 
-      var label = container.insert(new Q.UI.Text({x:10, y: 0,
+      var label = container.insert(new Q.UI.Text({x:10, y: 0, color: "white",
                                                        label: stage.options.label }));
-      container.insert(new Q.UI.Text({x:10, y: 30, label: "Leaderboard" }));
+      container.insert(new Q.UI.Text({x:10, y: 30, label: "Leaderboard", color: "white"  }));
 
-      container.insert(new Q.UI.Text({x:-80, y: 60, label: "#" }));
-      container.insert(new Q.UI.Text({x:0, y: 60, label: "Name" }));
-      container.insert(new Q.UI.Text({x:80, y: 60, label: "Score" }));
+      container.insert(new Q.UI.Text({x:-80, y: 60, label: "#", color: "white" }));
+      container.insert(new Q.UI.Text({x:0, y: 60, label: "Name", color: "white" }));
+      container.insert(new Q.UI.Text({x:80, y: 60, label: "Score", color: "white" }));
 
       leaderBoard.push({"name": result, "marks": Q.state.get("score").toString()});
 
@@ -94,12 +91,12 @@ window.addEventListener("load",function() {
 
         yPos = 60 + (posNumber * 25);
 
-        container.insert(new Q.UI.Text({x:-80, y: yPos, label: pos }));
-        container.insert(new Q.UI.Text({x:0, y: yPos, label: person.name }));
-        container.insert(new Q.UI.Text({x:100, y: yPos, label: marks }));
+        container.insert(new Q.UI.Text({x:-80, y: yPos, label: pos, color: "white"  }));
+        container.insert(new Q.UI.Text({x:0, y: yPos, label: person.name, color: "white"  }));
+        container.insert(new Q.UI.Text({x:100, y: yPos, label: marks, color: "white"  }));
       }
 
-      var button = container.insert(new Q.UI.Button({ x: 0, y: yPos + 70, fill: "#CCCCCC",
+      var button = container.insert(new Q.UI.Button({ x: 0, y: yPos + 70, fill: "#CCCCCC", color: "white" ,
                                                       label: "Play Again" }))
 
       // When the button is clicked, clear all the stages and restart the game.

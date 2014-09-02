@@ -26,3 +26,25 @@
   left:0px;
   opacity:0.4;
 }
+
+.score {
+  color: black;
+  position: absolute;
+  top: 10px;
+  left: 72%;
+  z-index: 1000;
+}
+
+.stopMusic {
+  position: absolute;
+  top: 10px;
+  left: 23%;
+  z-index: 1000;
+}
+
+.startMusic {
+  position: absolute;
+  top: 10px;
+  left: 26%;
+  z-index: 1000;
+}
