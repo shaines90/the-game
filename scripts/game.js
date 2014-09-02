@@ -1,4 +1,4 @@
-leaderBoard = [{"name": "Harry", "marks": 1999}, {"name": "Sophia", "marks": 1888}, {"name": "Nick", "marks": 1777}];
+leaderBoard = [];
 
 window.addEventListener("load",function() {
   //give lives and score on load
@@ -74,7 +74,7 @@ window.addEventListener("load",function() {
 
       var label = container.insert(new Q.UI.Text({x:10, y: 0,
                                                        label: stage.options.label }));
-      container.insert(new Q.UI.Text({x:10, y: 30, label: "Leader Board" }));
+      container.insert(new Q.UI.Text({x:10, y: 30, label: "Leaderboard" }));
 
       container.insert(new Q.UI.Text({x:-80, y: 60, label: "Pos" }));
       container.insert(new Q.UI.Text({x:0, y: 60, label: "Name" }));
@@ -90,14 +90,14 @@ window.addEventListener("load",function() {
         var pos = posNumber.toString();
         var marks = person.marks.toString();
 
-        yPos = 60 + (posNumber * 20);
+        yPos = 60 + (posNumber * 25);
 
-        container.insert(new Q.UI.Text({x:-80, y: yPos, label: pos }));
+        container.insert(new Q.UI.Text({x:-100, y: yPos, label: pos }));
         container.insert(new Q.UI.Text({x:0, y: yPos, label: person.name }));
-        container.insert(new Q.UI.Text({x:80, y: yPos, label: marks }));
+        container.insert(new Q.UI.Text({x:100, y: yPos, label: marks }));
       }
 
-      var button = container.insert(new Q.UI.Button({ x: 0, y: yPos + 50, fill: "#CCCCCC",
+      var button = container.insert(new Q.UI.Button({ x: 0, y: yPos + 70, fill: "#CCCCCC",
                                                       label: "Play Again" }))
 
       // When the button is clicked, clear all the stages and restart the game.
