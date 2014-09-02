@@ -4411,6 +4411,7 @@
   <object gid="235" x="127" y="188"/>
   <object gid="235" x="441" y="168"/>
   <object gid="20" x="21" y="486"/>
+  <object gid="447" x="336" y="543"/>
  </objectgroup>
  <layer name="foreground1" width="50" height="29">
   <properties>
