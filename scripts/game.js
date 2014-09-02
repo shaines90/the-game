@@ -50,7 +50,7 @@ window.addEventListener("load",function() {
       Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
       Q.audio.play('themeSong.mp3',{ loop: true });
-      Q.state.reset({ score: 0, lives: 3 });
+      Q.state.reset({ score: 0, lives: 3, die: false });
     }, {
       progressCallback: function(loaded,total) {
         var element = document.getElementById("loading_progress");
@@ -69,7 +69,7 @@ window.addEventListener("load",function() {
 
     //gameover screen overlay
     Q.scene('endGame',function(stage) {
-      var styling = new Q.UI.Container({x: Q.width/2, y: Q.height/2, fill: "rgba(0,0,0,0.5)"});
+      var styling = new Q.UI.Container({x: Q.width/2, y: 50, fill: "rgba(0,0,0,0.5)"});
       var container = stage.insert(styling);
 
       var label = container.insert(new Q.UI.Text({x:10, y: 0,
@@ -79,6 +79,9 @@ window.addEventListener("load",function() {
       container.insert(new Q.UI.Text({x:-80, y: 60, label: "Pos" }));
       container.insert(new Q.UI.Text({x:0, y: 60, label: "Name" }));
       container.insert(new Q.UI.Text({x:80, y: 60, label: "Marks" }));
+
+      var result = prompt("Enter your name");
+      leaderBoard.push({"name": result, "marks": Q.state.get("score").toString()});
 
       var yPos = 60;
       for (index in leaderBoard) {
@@ -100,6 +103,8 @@ window.addEventListener("load",function() {
       // When the button is clicked, clear all the stages and restart the game.
       button.on("click",function() {
         Q.clearStages();
+        Q.state.set({ score: 0 });
+        Q.state.set({die: false});
         Q.stageScene('level');
       });
 

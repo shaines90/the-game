@@ -11,11 +11,14 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       //death music
           Q.audio.play('kill-enemy.mp3');
       //message saying you died
-          Q.stageScene("endGame",1, { label: "You Died" });
+          if (Q.state.get("die") === false) {
+            Q.state.set({die: true});
+            Q.stageScene("endGame",1, { label: "You Died" });
+            Q.stage().pause();
+          }
       //damage player on hit
           collision.obj.damage();
       //set score to 0
-          Q.state.set({ score: 0 });
           Q.state.get("score"); // return the score
           console.log("your score has reset to 0");
         }
