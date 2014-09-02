@@ -15,8 +15,9 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       //damage player on hit
           collision.obj.damage();
       //set score to 0
-          Q.state.set("score",0);
-          Q.state.get("score");
+          Q.state.set({ score: 0 });
+          Q.state.get("score"); // return the score
+          console.log("your score has reset to 0");
         }
       });
       entity.on("bump.top", function(collision){
@@ -30,8 +31,9 @@ Quintus.ActionPlatformerEnemy = function(Q) {
           this.destroy();
           //add 50 to the score
           Q.state.inc("score",50);
+          Q.state.get("score"); // return the score
           console.log("your score has increased by 50");
-          Q.state.get("score");
+          // console.log("score" + score);
         }
       });
     }
@@ -95,7 +97,7 @@ Quintus.ActionPlatformerEnemy = function(Q) {
       this.p.vyDirection = this.p.vy/Math.abs(this.p.vy);
 
       //listen for hitting top or bottom to change direction
-      this.on("bump.bottom",function(collision) {
+      this.on("bump.bottom", function(collision) {
         that.p.vy = -Math.abs(that.p.initialVy) * that.p.vyDirection;
         that.p.vyDirection = that.p.vy/Math.abs(that.p.vy);
       });

@@ -1,16 +1,32 @@
 window.addEventListener("load",function() {
+  //give lives and score on load
+
   var Q = window.Q = Quintus({development: true})
     .include("Scenes, Sprites, 2D, Input, Touch, TMX, Audio, Anim, UI")
     .include("ActionPlatformerPlayer, ActionPlatformerEnemy")
     .setup({
-      width: 420,   //to fit devices with a screne resolution of 1280 x 720
-      height: 280,
-      // scaleToFit: true,
+      width: 820,   //to fit devices with a screne resolution of 1280 x 720
+      height: 480,
       maximize: "touch"
     }).controls().touch();
 
     Q.enableSound();
     Q.setImageSmoothing(false);
+
+    // Q.UI.Text.extend("Score",{
+    //   init: function(p) {
+    //     this._super({
+    //       label: "score: 0",
+    //       x: 35,
+    //       y: Q.height,
+    //       color: "black"
+    //     });
+    //   },
+
+    //   score: function(score) {
+    //     this.p.label = "score: " + score;
+    //   }
+    // });
 
     //define scene
     Q.scene("level", function(stage){
@@ -19,6 +35,12 @@ window.addEventListener("load",function() {
 
       player = Q("Player").first();
       stage.add("viewport").follow(player, {x: true, y: true});
+      // score = stage.insert(new Q.Score);
+
+      // Q.state.on("change.score", function(score) {
+      //   console.log("lala");
+      //   score.score(score);
+      // });
     });
 
     //load assets
@@ -26,31 +48,13 @@ window.addEventListener("load",function() {
       Q.compileSheets("sprites.png", "sprites.json");
       Q.stageScene("level");
       Q.audio.play('themeSong.mp3',{ loop: true });
+      Q.state.reset({ score: 0, lives: 3 });
     }, {
       progressCallback: function(loaded,total) {
         var element = document.getElementById("loading_progress");
         element.style.width = Math.floor(loaded/total*100) + "%";
       }
     });
-
-    //give lives and score on load
-    Q.state.reset({ score: 0, lives: 3 });
-    Q.UI.Text.extend("Score",{
-      init: function(p) {
-        this._super({
-          label: "score: 0",
-          x: 0,
-          y: 0
-        });
-
-        Q.state.on("change.score",this,"score");
-      },
-
-      score: function(score) {
-        this.p.label = "score: " + score;
-      }
-    });
-
 
     //mute music on .stopMusic button
     document.getElementById('stopMusicButton').onclick = function() {
