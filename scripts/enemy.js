@@ -34,8 +34,11 @@ Quintus.ActionPlatformerEnemy = function(Q) {
           this.destroy();
           //add 50 to the score
           Q.state.inc("score",50);
-          Q.state.get("score"); // return the score
-          console.log("your score has increased by 50");
+          score = Q.state.get("score"); // return the score
+          console.log("Your score is " + score);
+          $('.score').html("Score: " + score);
+          if(score == 700)
+            Q.stageScene("endGame",1, { label: "You Win" });
           // console.log("score" + score);
         }
       });

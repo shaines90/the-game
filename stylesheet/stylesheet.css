@@ -28,7 +28,8 @@
 }
 
 .score {
-  color: black;
+  color: white;
+  text-shadow: 0 1px black;
   position: absolute;
   top: 10px;
   left: 72%;
